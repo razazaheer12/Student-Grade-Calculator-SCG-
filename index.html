@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-card">
+            <div class="header">
+                <h1 class="title">Student Grade Calculator</h1>
+                <p class="subtitle">Calculate your academic performance</p>
+            </div>
+
+            <form id="gradeForm" class="form">
+                <div id="subjectsContainer">
+                    <div class="input-group subject-item" data-subject-id="1">
+                        <div class="subject-header">
+                            <input type="text" class="subject-name" placeholder="Subject name" value="Chemistry" required>
+                            <button type="button" class="remove-btn" onclick="removeSubject(1)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="number" class="subject-marks" placeholder="Enter marks (0-100)" min="0" max="100" required>
+                    </div>
+
+                    <div class="input-group subject-item" data-subject-id="2">
+                        <div class="subject-header">
+                            <input type="text" class="subject-name" placeholder="Subject name" value="English" required>
+                            <button type="button" class="remove-btn" onclick="removeSubject(2)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="number" class="subject-marks" placeholder="Enter marks (0-100)" min="0" max="100" required>
+                    </div>
+
+                    <div class="input-group subject-item" data-subject-id="3">
+                        <div class="subject-header">
+                            <input type="text" class="subject-name" placeholder="Subject name" value="Mathematics" required>
+                            <button type="button" class="remove-btn" onclick="removeSubject(3)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="number" class="subject-marks" placeholder="Enter marks (0-100)" min="0" max="100" required>
+                    </div>
+                </div>
+
+                <button type="button" class="add-subject-btn" onclick="addSubject()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    <span>Add Subject</span>
+                </button>
+
+                <button type="submit" class="calculate-btn">
+                    <span>Calculate Grade</span>
+                    <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </form>
+
+            <div id="results" class="results hidden">
+                <div class="result-card">
+                    <div class="result-item">
+                        <span class="result-label">Total Subjects</span>
+                        <span class="result-value" id="totalSubjects">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Total Marks</span>
+                        <span class="result-value" id="totalMarks">0/0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Percentage</span>
+                        <span class="result-value" id="percentage">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Grade</span>
+                        <span class="result-value grade-value" id="grade">-</span>
+                    </div>
+                    <div class="result-item status-item">
+                        <span class="result-label">Status</span>
+                        <span class="result-value status-value" id="status">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

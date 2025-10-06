@@ -1,0 +1,701 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --accent: #ec4899;
+    --success: #10b981;
+    --danger: #ef4444;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #334155;
+    --text: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, transparent 70%);
+    top: -250px;
+    right: -250px;
+    animation: float 20s ease-in-out infinite;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.45) 0%, transparent 70%);
+    bottom: -200px;
+    left: -200px;
+    animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, 30px) scale(1.1);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    z-index: 1;
+}
+
+.calculator-card {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.6s ease-out;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.calculator-card::-webkit-scrollbar {
+    width: 8px;
+}
+
+.calculator-card::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 10px;
+}
+
+.calculator-card::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid var(--primary);
+    width: 0;
+    animation:
+        typing 3s steps(30, end) forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary) }
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+    animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#subjectsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subject-item {
+    animation: slideInLeft 0.4s ease-out both;
+    transition: all 0.3s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.subject-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.subject-name {
+    flex: 1;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.subject-name:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.subject-name::placeholder {
+    color: var(--text-secondary);
+}
+
+.remove-btn {
+    padding: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    color: var(--danger);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: var(--danger);
+    transform: scale(1.05);
+}
+
+.remove-btn:active {
+    transform: scale(0.95);
+}
+
+.subject-marks {
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.subject-marks:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.subject-marks::placeholder {
+    color: var(--text-secondary);
+}
+
+.add-subject-btn {
+    padding: 14px 20px;
+    background: rgba(139, 92, 246, 0.45);
+    border: 2px dashed var(--secondary);
+    border-radius: 12px;
+    color: var(--secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.add-subject-btn:hover {
+    background: rgba(139, 92, 246, 0.5);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.add-subject-btn:active {
+    transform: translateY(0);
+}
+
+.calculate-btn {
+    margin-top: 10px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.calculate-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.calculate-btn:hover::before {
+    left: 100%;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.calculate-btn:active {
+    transform: translateY(0);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+.calculate-btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+.results {
+    margin-top: 30px;
+    opacity: 0;
+    animation: slideInUp 0.5s ease-out 0.2s forwards;
+}
+
+.results.hidden {
+    display: none;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.result-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.grade-value {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+}
+
+.status-value {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.status-value.pass {
+    background: rgba(16, 185, 129, 0.5);
+    color: var(--success);
+}
+
+.status-value.fail {
+    background: rgba(239, 68, 68, 0.5);
+    color: var(--danger);
+}
+
+/* Large screens (desktops, large laptops) */
+@media (min-width: 1201px) {
+    .container {
+        max-width: 700px;
+    }
+
+    .calculator-card {
+        padding: 50px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .subject-name {
+        padding: 14px 18px;
+        font-size: 1rem;
+    }
+
+    .subject-marks {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }
+
+    .add-subject-btn {
+        padding: 16px 24px;
+        font-size: 1rem;
+    }
+
+    .calculate-btn {
+        padding: 18px 28px;
+        font-size: 1.1rem;
+    }
+
+    .result-card {
+        padding: 28px;
+    }
+
+    .result-value {
+        font-size: 1.8rem;
+    }
+
+    .grade-value {
+        font-size: 2.5rem;
+    }
+}
+
+/* Medium screens (tablets, small laptops) */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .container {
+        max-width: 600px;
+    }
+
+    .calculator-card {
+        padding: 45px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .subject-name {
+        padding: 13px 17px;
+        font-size: 0.98rem;
+    }
+
+    .subject-marks {
+        padding: 15px 19px;
+        font-size: 1.05rem;
+    }
+
+    .add-subject-btn {
+        padding: 15px 22px;
+        font-size: 0.98rem;
+    }
+
+    .calculate-btn {
+        padding: 17px 26px;
+        font-size: 1.05rem;
+    }
+
+    .result-card {
+        padding: 26px;
+    }
+
+    .result-value {
+        font-size: 1.6rem;
+    }
+
+    .grade-value {
+        font-size: 2.2rem;
+    }
+}
+
+/* Small tablets and large phones */
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        max-width: 500px;
+    }
+
+    .calculator-card {
+        padding: 35px 30px;
+        max-height: 85vh;
+    }
+
+    .header {
+        margin-bottom: 35px;
+    }
+
+    .title {
+        font-size: 1.9rem;
+    }
+
+    .subtitle {
+        font-size: 0.92rem;
+    }
+
+    .form {
+        gap: 18px;
+    }
+
+    #subjectsContainer {
+        gap: 18px;
+    }
+
+    .subject-name {
+        padding: 11px 15px;
+        font-size: 0.92rem;
+    }
+
+    .subject-marks {
+        padding: 13px 17px;
+        font-size: 0.98rem;
+    }
+
+    .add-subject-btn {
+        padding: 13px 18px;
+        font-size: 0.92rem;
+    }
+
+    .calculate-btn {
+        padding: 15px 22px;
+        font-size: 0.98rem;
+    }
+
+    .results {
+        margin-top: 25px;
+    }
+
+    .result-card {
+        padding: 22px;
+        gap: 18px;
+    }
+
+    .result-value {
+        font-size: 1.4rem;
+    }
+
+    .grade-value {
+        font-size: 1.9rem;
+    }
+
+    .status-value {
+        font-size: 0.88rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .calculator-card {
+        padding: 25px 20px;
+        border-radius: 20px;
+        max-height: 95vh;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .subtitle {
+        font-size: 0.88rem;
+    }
+
+    .form {
+        gap: 16px;
+    }
+
+    #subjectsContainer {
+        gap: 16px;
+    }
+
+    .subject-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .subject-name {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+
+    .subject-marks {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    .remove-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .add-subject-btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .calculate-btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+
+    .results {
+        margin-top: 20px;
+    }
+
+    .result-card {
+        padding: 18px;
+        gap: 16px;
+    }
+
+    .result-item {
+        padding-bottom: 12px;
+    }
+
+    .result-label {
+        font-size: 0.9rem;
+    }
+
+    .result-value {
+        font-size: 1.2rem;
+    }
+
+    .grade-value {
+        font-size: 1.6rem;
+    }
+
+    .status-value {
+        padding: 5px 12px;
+        font-size: 0.85rem;
+    }
+}
