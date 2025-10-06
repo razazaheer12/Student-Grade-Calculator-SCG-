@@ -2,6 +2,8 @@
 
 Welcome to the **Student Grade Calculator**! This is a sleek, responsive web application designed to help students easily calculate their academic performance by entering their subjects and marks. The app provides a clear summary of total subjects, total marks, percentage, grade, and pass/fail status with an engaging UI and smooth animations.
 
+<img width="727" height="423" alt="image" src="https://github.com/user-attachments/assets/57c7f2b3-3a06-4e81-865d-f24d393e3dab" />
+
 ---
 
 ## 🚀 Features
