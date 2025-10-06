@@ -87,5 +87,6 @@ This project is open source and available under the MIT License.
 Thanks for checking out the Student Grade Calculator! Hope it helps you keep track of your academic progress easily.
 
 ---
+## Author
 
-Made with ❤️ and ☕ by [Your Name]
+Made with ❤️ and ☕ by [Raza Zaheer]
