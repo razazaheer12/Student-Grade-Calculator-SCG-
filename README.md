@@ -68,7 +68,8 @@ The app adapts seamlessly to different screen sizes:
 1. Clone or download the repository.
 2. Open the project folder.
 3. Open `index.html` in your preferred web browser.
-4. Start using the Student Grade Calculator!
+4. To View SGC on browser click on this url : https://student-grade-calculator-scg.vercel.app/
+5. Start using the Student Grade Calculator!
 
 ---
 
