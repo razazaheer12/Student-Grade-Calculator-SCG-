@@ -92,4 +92,4 @@ Thanks for checking out the Student Grade Calculator! Hope it helps you keep tra
 ---
 ## Author
 
-Made with ❤️ and ☕ by [Raza Zaheer]
+Made by [Raza Zaheer] 
